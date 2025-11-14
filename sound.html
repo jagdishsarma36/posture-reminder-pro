@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <audio id="alertSound" src="ding.mp3" preload="auto"></audio>
+    <script>
+      chrome.runtime.onMessage.addListener((msg) => {
+        if (msg.action === "playSound") {
+          const s = document.getElementById("alertSound");
+          try { s.currentTime = 0; s.play(); } catch (e) { console.warn("Audio play failed:", e); }
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Posture Reminder Pro",
+  "version": "3.0",
+  "description": "Reminds you to stretch and breathe, with working sound alerts.",
+  "permissions": [
+    "notifications",
+    "alarms",
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "web_accessible_resources": [{
+    "resources": ["ding.mp3"],
+    "matches": ["<all_urls>"]
+  }],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "128": "icon-dark.png"
+    }
+  },
+  "icons": {
+    "16": "icon-dark.png",
+    "48": "icon-dark.png",
+    "128": "icon-dark.png"
+  }
+}

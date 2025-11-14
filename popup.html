@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Posture Reminder Settings</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', system-ui, sans-serif;
+        margin: 0;
+        padding: 20px;
+        width: 300px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        min-height: 350px;
+      }
+
+      .container {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        padding: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      h3 {
+        margin: 0 0 20px 0;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 600;
+        color: white;
+      }
+
+      .input-group {
+        margin-bottom: 15px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 13px;
+        font-weight: 500;
+        opacity: 0.9;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px 12px;
+        border: none;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.9);
+        font-size: 14px;
+        box-sizing: border-box;
+      }
+
+      input:focus {
+        outline: none;
+        background: white;
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+      }
+
+      .button-group {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+
+      .button-group-column {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 15px;
+      }
+
+      button {
+        flex: 1;
+        padding: 10px 16px;
+        border: none;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      #save {
+        background: #4CAF50;
+        color: white;
+      }
+
+      #save:hover {
+        background: #45a049;
+        transform: translateY(-1px);
+      }
+
+      #test {
+        background: #FF9800;
+        color: white;
+      }
+
+      #test:hover {
+        background: #f57c00;
+        transform: translateY(-1px);
+      }
+
+      #start {
+        background: #2196F3;
+        color: white;
+      }
+
+      #start:hover {
+        background: #1976D2;
+        transform: translateY(-1px);
+      }
+
+      #stop {
+        background: #f44336;
+        color: white;
+      }
+
+      #stop:hover {
+        background: #d32f2f;
+        transform: translateY(-1px);
+      }
+
+      #reset {
+        background: #9C27B0;
+        color: white;
+      }
+
+      #reset:hover {
+        background: #7B1FA2;
+        transform: translateY(-1px);
+      }
+
+      #status {
+        text-align: center;
+        font-size: 12px;
+        min-height: 16px;
+        margin: 10px 0;
+        font-weight: 500;
+      }
+
+      .stats {
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 10px;
+        padding: 15px;
+        margin-top: 15px;
+        text-align: center;
+      }
+
+      .stat-item {
+        margin-bottom: 8px;
+      }
+
+      .stat-value {
+        font-size: 20px;
+        font-weight: bold;
+        color: #a8e6cf;
+      }
+
+      .stat-label {
+        font-size: 11px;
+        opacity: 0.8;
+        margin-top: 2px;
+      }
+
+      #timer {
+        font-size: 24px;
+        font-weight: bold;
+        color: #a8e6cf;
+        margin: 5px 0;
+      }
+
+      #counter {
+        font-size: 18px;
+        font-weight: bold;
+        color: #ffd93d;
+      }
+
+      .status-indicator {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-right: 6px;
+      }
+
+      .status-running {
+        background: #4CAF50;
+      }
+
+      .status-stopped {
+        background: #f44336;
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 15px;
+        font-size: 10px;
+        opacity: 0.6;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h3>🧘 Posture Reminder Pro</h3>
+      
+      <div class="input-group">
+        <label for="interval">Reminder Interval (minutes):</label>
+        <input type="number" id="interval" min="1" step="1" value="20" />
+      </div>
+
+      <div class="button-group">
+        <button id="save">Save</button>
+        <button id="test">Test 🔔</button>
+      </div>
+
+      <div class="button-group-column">
+        <button id="start">▶ Start Reminders</button>
+        <button id="stop">⏹ Stop Reminders</button>
+        <button id="reset">🔄 Reset Counter</button>
+      </div>
+
+      <div id="status"></div>
+
+      <div class="stats">
+        <div class="stat-item">
+          <div class="stat-label">Status: <span id="statusText">Loading...</span></div>
+          <div class="stat-label">Next reminder in:</div>
+          <div id="timer">--:--</div>
+        </div>
+        
+        <div class="stat-item">
+          <div class="stat-label">Today's stretches:</div>
+          <div id="counter">0</div>
+        </div>
+      </div>
+
+      <div class="footer">
+        Stay healthy! 🌿
+      </div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Take a Breather 🌿</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        text-align: center;
+        background: linear-gradient(to bottom right, #b3f1d6, #f1fff4);
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      h2 {
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      #circle {
+        width: 100px;
+        height: 100px;
+        background: #5bc18e;
+        border-radius: 50%;
+        transition: all 4s ease-in-out;
+      }
+
+      #tip {
+        margin-top: 20px;
+        font-size: 16px;
+        color: #333;
+        max-width: 250px;
+      }
+
+      #count {
+        margin-top: 10px;
+        color: #555;
+        font-size: 13px;
+      }
+
+      #message {
+        margin-top: 15px;
+        font-weight: bold;
+        color: #3b7;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Take a Breather 🌿</h2>
+    <div id="circle"></div>
+    <div id="message">Inhale...</div>
+    <div id="tip"></div>
+    <div id="count"></div>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const tip = params.get("tip");
+      const count = params.get("count");
+
+      document.getElementById("tip").textContent = tip;
+      document.getElementById("count").textContent =
+        "Today's stretches: " + count;
+
+      const circle = document.getElementById("circle");
+      const message = document.getElementById("message");
+      let phase = 0;
+
+      function breathingCycle() {
+        if (phase % 2 === 0) {
+          // Inhale
+          circle.style.transform = "scale(1.5)";
+          message.textContent = "Inhale... 🌬️";
+        } else {
+          // Exhale
+          circle.style.transform = "scale(1)";
+          message.textContent = "Exhale... 😌";
+        }
+        phase++;
+      }
+
+      breathingCycle();
+      const interval = setInterval(breathingCycle, 4000);
+
+      // Auto-close after 20 seconds
+      setTimeout(() => {
+        clearInterval(interval);
+        window.close();
+      }, 20000);
+    </script>
+  </body>
+</html>
